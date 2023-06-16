@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.bofa.demo'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+war {
+    archiveFileName = 'demo-struts.war'
+}
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    //implementation ('org.springframework:spring-core:4.3.6.RELEASE') {
+        //exclude  group: 'commons-logging', module: 'commons-logging'
+    //}
+
+
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.3'
+    implementation 'javax.servlet:jstl:1.2'
+
+    implementation group: 'org.ow2.asm', name: 'asm', version: '9.5'
+
+    implementation 'org.apache.struts:struts2-core:2.5.5'
+    //implementation 'org.apache.struts:struts2-spring-plugin:2.5.5'
+    //implementation 'org.apache.struts:struts2-json-plugin:2.5.5'
+
+    implementation ('org.apache.struts:struts2-convention-plugin:2.5.8') {
+        exclude  group: 'org.ow2.asm', module: 'asm'
+    }
+
+}
+
+test {
+    useJUnitPlatform()
+}
