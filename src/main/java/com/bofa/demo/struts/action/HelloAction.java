@@ -9,7 +9,7 @@ import org.apache.struts2.convention.annotation.Result;
 @Namespaces({
         @Namespace("/")
 })
-@Action("/car")
+@Action("/hello")
 @Result(name = "success", location = "result.jsp")
 public class HelloAction {
     private String language;
@@ -17,17 +17,17 @@ public class HelloAction {
     private HelloMessageService helloMessageService = new HelloMessageService();
 
     public String execute() {
-        System.out.println("   ***** CarAction called with: " + language) ;
+        System.out.println("   ***** HelloAction called with: " + language) ;
         this.setHelloMessage(this.helloMessageService.getLanguage(language));
         return "success";
     }
 
-    public String getLanguage() {
-        return language;
-    }
-
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getLanguage() {
+        return language;
     }
 
     public String getHelloMessage() {

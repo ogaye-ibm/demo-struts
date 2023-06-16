@@ -7,7 +7,7 @@
 <title>Demo Struts</title>
 </head>
 <body>
-	<form method="get" action="car.action">
+	<form method="get" action="hello.action">
 		<p>Welcome to Legacy Struts</p>
 		<p>How do you want your customized greeting?</p>
 		<p>Please choose english or french</p>
